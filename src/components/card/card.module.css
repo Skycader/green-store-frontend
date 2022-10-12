@@ -1,0 +1,28 @@
+.cardTitle {
+  font-family: Roboto;
+  color: black;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: inset 0 0 2000px rgb(255 255 255 / 50%)
+}
+
+.card {
+  cursor: pointer;
+}
+
+.add {
+  /* background: rgb(51 192 51); */
+  transition-duration: 0.5s;
+}
+
+.add:hover {
+  /* background: lime; */
+}
+
+.addutton {
+  transition-duration: 0.1s;
+}
+
+.addButton:active {
+  /* transform: scale(0.5) */
+}

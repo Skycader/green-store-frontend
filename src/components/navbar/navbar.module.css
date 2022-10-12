@@ -1,0 +1,40 @@
+.span {
+  margin-left: 10px;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 3;
+}
+
+.space {
+  height: 64px;
+}
+
+.total {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: red;
+    color: white;
+    font-size: 8pt;
+    text-align: center;
+    line-height: 20px;
+    left: 25px;
+    margin-top: 10px;
+    transform: translateX(-25px);
+    z-index: 50;
+}
+
+.searchBar {
+  height: 64px;
+}
+
+ .greenSearch {
+  width: 0px !important;
+  transition-duration: 0.5s !important;
+}
+
+.greenSearch:focus {
+  width: 200px !important;
+}
