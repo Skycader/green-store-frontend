@@ -1,28 +1,16 @@
 import shop from "../../api/Api.js";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import Card from "../card/Card";
 import { useDispatch, useSelector } from "react-redux";
 function Home() {
   const dispatch = useDispatch();
-  window.dispatch = dispatch
-  window.shop = shop
-  console.log(shop)
-  const state = useSelector(state=>state)
-  window.state = state
+  window.dispatch = dispatch;
   const products = useSelector((state) => state.shop.products);
-  const setProducts = (products) => {
-    dispatch({ type: "SET_PRODUCTS", payload: products });
-  };
+ 
+  useEffect(() => {
+    dispatch({ type: "SET_LOADING", payload: false });
+  }, []);
 
-  const download = () => {
-    setLoading(false);
-    shop.products.get().then((res) => setProducts(res.result));
-  };
-
-  useEffect(download, []);
-
-  const [loading, setLoading] = useState(true);
-  
   return (
     <div>
       <div className="row">
@@ -30,10 +18,14 @@ function Home() {
           products.map((product) => (
             <div className="col l4 m6 s12">
               <Card
+                id={product.id}
+                inBasket={0}
+                mode="home"
                 name={product.name}
                 img={product.image}
                 description={product.description}
                 price={product.price}
+                count={product.count}
               ></Card>
             </div>
           ))

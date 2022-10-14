@@ -1,14 +1,17 @@
 import Style from "./navbar.module.css";
 import {Link} from 'react-router-dom'
 import {useRef} from "react"
+import { useSelector } from "react-redux";
+
 const Navbar = (props) => {
   const searchBar = useRef()
-  window.searchBar = searchBar
+  const loading = useSelector(state=>state.loading.loading)
+  window.loading = loading
   return (
 <>
-    {props.loading && (
+    {loading&& (
       <div
-        style={{ margin: 0, position: "absolute", zIndex: 1 }}
+        style={{ margin: 0, position: "fixed", zIndex: 4 }}
         className="progress"
       >
         <div className="indeterminate"></div>
@@ -49,7 +52,7 @@ const Navbar = (props) => {
             <Link to="/cart" style={{ paddingRight: 0, width: 65 }}>
               <i className="material-icons">shopping_cart</i>
             </Link>
-            <div className={Style.total}>0</div>
+            <div className={Style.total}>{props.total}</div>
           </li>
           <li style={{ transform: "translate(-20px,0)" }}>
             <Link to="/account">

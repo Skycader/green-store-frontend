@@ -1,5 +1,5 @@
 const defaultState = {
-  loading: false
+  loading: true
 };
 
 export const loadingReducer = (state = defaultState, action) => {

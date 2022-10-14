@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import shop from "../../api/Api.js";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
 const Account = () => {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   window.navigate = navigate;
 
@@ -18,6 +19,16 @@ const Account = () => {
   };
 
   useEffect(user, []);
+  useEffect(() => {
+    dispatch({ type: "SET_LOADING", payload: false });
+  }, []);
+
+  useEffect(() => {
+    shop.user.getBasket().then((res) => {
+      dispatch({ type: "SET_BASKET", payload: res });
+    });
+  }, []);
+
   return (
     <>
       {localStorage.getItem("user") !== null && (
@@ -30,14 +41,27 @@ const Account = () => {
                   <button
                     onClick={() => {
                       shop.user.signOut();
+                      dispatch({ type: "SET_BASKET", payload: {} });
+                      dispatch({ type: "SET_TOTAL_PRODUCTS", payload: 0 });
                       setName("");
                     }}
-                    class="col s12 l5 btn waves-effect waves-light"
+                    className="col s12 l5 btn waves-effect waves-light"
                     type="submit"
                     name="action"
                   >
                     Sign out
                   </button>
+                   <div className="col s1"></div>
+                  {name == "admin" && (
+                    <button
+                      onClick={() => {navigate("/admin-panel")}}
+                      className="col s12 l5 btn waves-effect waves-light"
+                      type="submit"
+                      name="action"
+                    >
+                      Admin panel
+                    </button>
+                  )}
                 </p>
               </div>
             </div>
@@ -75,10 +99,10 @@ const Account = () => {
                 onClick={() => {
                   shop.user
                     .signUp(name, password)
-                    .then(() => shop.user.signIn(name,password))
-                    .then(()=>navigate("/account"))
+                    .then(() => shop.user.signIn(name, password))
+                    .then(() => navigate("/account"));
                 }}
-                class="col s12 l5 btn waves-effect waves-light"
+                className="col s12 l5 btn waves-effect waves-light"
                 type="submit"
                 name="action"
               >
