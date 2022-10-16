@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux";
 
 const Account = () => {
   const [name, setName] = useState("");
+  window.name = name
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -15,8 +16,14 @@ const Account = () => {
       let user = JSON.parse(localStorage.getItem("user"));
       setName(user.name);
       setPassword(user.password);
+      shop.user.getBasket().then((res) => {
+        console.log(res)
+        dispatch({ type: "SET_BASKET", payload: res });
+      });
     }
   };
+
+  window.user = user
 
   useEffect(user, []);
   useEffect(() => {
@@ -100,7 +107,7 @@ const Account = () => {
                   shop.user
                     .signUp(name, password)
                     .then(() => shop.user.signIn(name, password))
-                    .then(() => navigate("/account"));
+                    .then(() => { navigate("/account")});
                 }}
                 className="col s12 l5 btn waves-effect waves-light"
                 type="submit"
@@ -114,7 +121,7 @@ const Account = () => {
                 onClick={() => {
                   shop.user
                     .signIn(name, password)
-                    .then(() => navigate("/account"));
+                    .then(() => {user(); navigate("/account")});
                 }}
                 class="col l5 s12 btn waves-effect waves-light"
                 type="submit"

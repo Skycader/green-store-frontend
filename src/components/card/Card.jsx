@@ -96,7 +96,7 @@ const Card = (props) => {
               className="waves-effect waves-light btn-small"
             >
               <i className="material-icons">shopping_basket</i>{" "}
-              <div>${props.price*props.inBasket}</div>
+              <div>${(props.price*props.inBasket).toFixed(2)}</div>
             </a>
           </div>
         )}

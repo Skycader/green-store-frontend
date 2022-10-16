@@ -35,11 +35,11 @@ const Cart = () => {
   };
 
   const countTotalPrice = (basket) => {
-    console.log("BASKET: ",basket)
+     
     let res = basket.reduce((total, product) => {
       return (total += product.price * product.inBasket);
     }, 0);
-    return res
+    return res.toFixed(2)
   };
 
   useEffect(() => {
