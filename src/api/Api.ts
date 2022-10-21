@@ -58,7 +58,7 @@ class User extends Api {
   signedIn: boolean = localStorage.getItem("user") ? true : false;
 
   init(): Iinit {
-    let user = JSON.parse(localStorage.getItem("user") || "");
+    let user = JSON.parse(localStorage.getItem("user") || "{}");
     if (!user?.name) user.name = "";
     if (!user?.password) user.password = "";
     return {
