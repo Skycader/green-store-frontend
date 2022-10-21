@@ -25,6 +25,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "deploy": "gh-pages -d build",
     "analyze": "source-map-explorer 'build/static/js/*.js'",
     "analyze2": "webpack-bundle-analyzer build/bundle-stats.json",
     "build": "react-scripts build --stats",
