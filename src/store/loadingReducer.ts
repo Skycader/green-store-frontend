@@ -12,7 +12,7 @@ const SET_LOADING = "SET_LOADING"
 export const loadingReducer = (state = defaultState, action: ILoadingAction):loading => {
   switch (action.type) {
     case SET_LOADING:
-      return { ...state, loading: action.payload };
+      return { ...state, loading: action.};
     default:
       return state;
   }

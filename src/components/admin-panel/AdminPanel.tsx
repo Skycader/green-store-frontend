@@ -1,11 +1,13 @@
 import { FC, useState } from "react";
 import shop from "../../api/Api"
-import { setProductsAction } from "../../store/shopReducer";
+import { cleanProductsAction, setProductsAction } from "../../store/shopReducer";
 import { useTypedSelector } from "../../store/hooks/useTypedSelector";
 import { IProduct } from "../../types/interfaces/IProduct";
+import { useDispatch } from "react-redux";
 const AdminPanel:FC = () => {
   const products = useTypedSelector((state) => state.shop.products);
   const [modal, showModal] = useState<boolean>(false)
+  const dispatch = useDispatch()
   const [product, setProduct] = useState<IProduct>(
     {
       id: 0,
@@ -126,12 +128,14 @@ const AdminPanel:FC = () => {
                   shop.user.editProduct(id,name,count,price,image,description)
                   .then( (res) => {
                     showModal(false)
+                    shop.products.get().then((res) => {
+                      // cleanProductsAction()
+                      dispatch(setProductsAction(res.result))
+                  })
                     return "OK"
                   }
                   )
-                  shop.products.get().then((res) => {
-                    setProductsAction(res.result);
-                  })
+                  
                 }
               }
                 className="col l12 m12 s12 btn waves-effect waves-light"
