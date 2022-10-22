@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import shop from "../../api/Api"
-import { cleanProductsAction, setProductsAction } from "../../store/shopReducer";
+import { setProductsAction } from "../../store/shopReducer";
 import { useTypedSelector } from "../../store/hooks/useTypedSelector";
 import { IProduct } from "../../types/interfaces/IProduct";
 import { useDispatch } from "react-redux";
@@ -129,7 +129,6 @@ const AdminPanel:FC = () => {
                   .then( (res) => {
                     showModal(false)
                     shop.products.get().then((res) => {
-                      // cleanProductsAction()
                       dispatch(setProductsAction(res.result))
                   })
                     return "OK"

@@ -1,24 +1,33 @@
 import { ILoadingAction } from "../types/interfaces/ILoadingAction";
 
-interface loading {
+interface ILoading {
   loading: boolean
 }
-const defaultState:loading = {
+
+interface SET_LOADING {
+  type: LoadingActionTypes.SET_LOADING;
+  payload: boolean
+}
+const defaultState:ILoading = {
   loading: true
 };
 
-const SET_LOADING = "SET_LOADING"
+enum LoadingActionTypes {
+  SET_LOADING = "SET_LOADING"
+}
 
-export const loadingReducer = (state = defaultState, action: ILoadingAction):loading => {
+type LoadingAction = SET_LOADING
+
+export const loadingReducer = (state = defaultState, action: LoadingAction):ILoading => {
   switch (action.type) {
-    case SET_LOADING:
+    case LoadingActionTypes.SET_LOADING:
       return { ...state, loading: action.payload};
     default:
       return state;
   }
 };
 
-export const setLoadingAction = (payload: loading) => ({
-  type: SET_LOADING,
+export const setLoadingAction = (payload: ILoading) => ({
+  type: LoadingActionTypes.SET_LOADING,
   payload,
 });

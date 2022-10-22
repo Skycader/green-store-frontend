@@ -13,9 +13,9 @@ test("Test dispatch SET_PRODUCTS", () => {
       inBasket: 2,
     },
   ];
-  const obj = setProductsAction(input_products)
-  store.dispatch({type: "SET_PRODUCTS", payload: input_products});
+   
+  store.dispatch(setProductsAction(input_products))
 
   const products = store.getState().shop.products
-  expect(products).toEqual(25);
+  expect(products).toEqual(input_products);
 });

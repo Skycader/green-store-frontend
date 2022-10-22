@@ -4,8 +4,8 @@ import {shopReducer} from './shopReducer'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunk from "redux-thunk";
 const rootReducer = combineReducers({
-  loading: loadingReducer,
   shop: shopReducer,
+  loading: loadingReducer,
 })
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
