@@ -18,7 +18,7 @@ const Card:FC<CardProps> = (props) => {
 
   const editCart = (add: number) => {
     shop.user.manipulateBasket(props.id, props.inBasket + add).then((res) => {
-      if (res.status == "OK") {
+      if (res.status === "OK") {
         shop.products.get().then((res) => {
           console.log(res)
           dispatch(setProductsAction(res.result));
