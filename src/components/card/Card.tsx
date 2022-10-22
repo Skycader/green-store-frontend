@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import shop from "../../api/Api";
 import { FC } from "react";
 import { IProduct } from "../../types/interfaces/IProduct";
-import { setProductsAction } from "../../store/shopReducer";
+import { setBasketAction, setProductsAction } from "../../store/shopReducer";
 
 interface CardProps extends IProduct {
   productMode?: number
@@ -20,16 +20,17 @@ const Card:FC<CardProps> = (props) => {
     shop.user.manipulateBasket(props.id, props.inBasket + add).then((res) => {
       if (res.status == "OK") {
         shop.products.get().then((res) => {
-          setProductsAction(res.result);
+          console.log(res)
+          dispatch(setProductsAction(res.result));
         });
         
         shop.user.getBasket().then((res) => {
-          dispatch({ type: "SET_BASKET", payload: res });
+          dispatch(setBasketAction(res));
         });
         
         
       } else {
-        alert("NO MORE PRODUCT AVAILABLE!");
+        alert("NO MORE PRODUCTS AVAILABLE!");
       }
     });
   };
