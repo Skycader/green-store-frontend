@@ -15,7 +15,7 @@ test("Test dispatch SET_PRODUCTS", () => {
     },
   ];
    
-  const setProducts = (products: IProduct[]) => {
+  const setProducts = (products) => {
     store.dispatch(setProductsAction(products))
   };
 
