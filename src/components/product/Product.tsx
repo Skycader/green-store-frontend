@@ -25,7 +25,7 @@ const Product = () => {
 
   useEffect(() => {
     shop.products
-      .getProductByName(name!.replaceAll("-", " "))
+      .getProductByName(name?.replaceAll("-", " ")!)
       .then((res) => setProduct(res.result[0]));
   }, []);
 

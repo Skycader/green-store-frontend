@@ -1,4 +1,3 @@
-import { applyMiddleware } from 'redux';
 import { IProduct } from "../types/interfaces/IProduct";
 
 interface IShop {
@@ -41,7 +40,6 @@ export const shopReducer = (
   state = defaultState,
   action: ShopAction
 ): IShop => {
-  console.log("!!!", "STATE: ", state, "ACTION: ", action);
   switch (action.type) {
     case ShopActionTypes.SET_PRODUCTS:
       return { ...state, products: action.payload };

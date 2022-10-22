@@ -55,6 +55,7 @@ function App() {
   }, []);
 
   return (
+    
     <BrowserRouter>
       <Navbar total={totalProducts} loading={false}></Navbar>
       <Routes>

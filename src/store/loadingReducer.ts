@@ -17,3 +17,8 @@ export const loadingReducer = (state = defaultState, action: ILoadingAction):loa
       return state;
   }
 };
+
+export const setLoadingAction = (payload: loading) => ({
+  type: SET_LOADING,
+  payload,
+});

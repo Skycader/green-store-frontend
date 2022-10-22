@@ -1,0 +1,1 @@
+export const getLoadingValue = (state: { loading?: { loading: boolean } }) => state?.loading?.loading || 0
