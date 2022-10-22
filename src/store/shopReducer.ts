@@ -45,12 +45,12 @@ export const shopReducer = (
   }
 };
 
-export const setProductsAction = (payload: IProduct[]) => ({
+export const setProductsAction = (payload: IProduct[]):ShopAction => ({
   type: ShopActionTypes.SET_PRODUCTS,
   payload,
 });
 
-export const setBasketAction = (payload: IBasket) => ({
+export const setBasketAction = (payload: IBasket):ShopAction => ({
   type: ShopActionTypes.SET_BASKET,
   payload,
 });
