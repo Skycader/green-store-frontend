@@ -5,6 +5,11 @@ interface IShop {
   basket: IBasket;
 }
 
+enum ShopActionTypes {
+  SET_PRODUCTS = "SET_PRODUCTS",
+  SET_BASKET = "SET_BASKET",
+}
+
 interface IBasket {
   [name: number]: number;
 }
@@ -23,11 +28,6 @@ const defaultState: IShop = {
   products: [],
   basket: {},
 };
-
-enum ShopActionTypes {
-  SET_PRODUCTS = "SET_PRODUCTS",
-  SET_BASKET = "SET_BASKET",
-}
 
 type ShopAction = SET_PRODUCTS | SET_BASKET;
 

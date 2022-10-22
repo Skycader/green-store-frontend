@@ -1,5 +1,6 @@
 import { store } from "../../store";
 import { setProductsAction } from "../../store/shopReducer";
+import { IProduct } from "../../types/interfaces/IProduct";
 
 test("Test dispatch SET_PRODUCTS", () => {
   const input_products = [
@@ -14,8 +15,11 @@ test("Test dispatch SET_PRODUCTS", () => {
     },
   ];
    
-  store.dispatch(setProductsAction(input_products))
+  const setProducts = (products: IProduct[]) => {
+    store.dispatch(setProductsAction(products))
+  };
 
+  setProducts((input_products))
   const products = store.getState().shop.products
   expect(products).toEqual(input_products);
 });
