@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/green-store-frontend/static/css/main.914303af.css",
-    "main.js": "/green-store-frontend/static/js/main.2b170f6b.js",
+    "main.js": "/green-store-frontend/static/js/main.a80b786f.js",
     "index.html": "/green-store-frontend/index.html",
     "main.914303af.css.map": "/green-store-frontend/static/css/main.914303af.css.map",
-    "main.2b170f6b.js.map": "/green-store-frontend/static/js/main.2b170f6b.js.map"
+    "main.a80b786f.js.map": "/green-store-frontend/static/js/main.a80b786f.js.map"
   },
   "entrypoints": [
     "static/css/main.914303af.css",
-    "static/js/main.2b170f6b.js"
+    "static/js/main.a80b786f.js"
   ]
 }
