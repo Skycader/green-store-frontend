@@ -15,20 +15,20 @@ const Card:FC<CardProps> = (props) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-
   const editCart = (add: number) => {
     shop.user.manipulateBasket(props.id, props.inBasket + add).then((res) => {
       if (res.status === "OK") {
         shop.products.get().then((res) => {
           console.log(res)
           dispatch(setProductsAction(res.result));
-        });
-        
-        shop.user.getBasket().then((res) => {
-          dispatch(setBasketAction(res));
-        });
-        
-        
+        }).
+        then(res=>
+          shop.user.getBasket().then((res) => {
+            console.log("RES: ",res)
+            dispatch(setBasketAction(res));
+          })
+        )
+
       } else {
         alert("NO MORE PRODUCTS AVAILABLE!");
       }
