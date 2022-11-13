@@ -1,6 +1,6 @@
 {
   "name": "green-store-app",
-  "homepage": "https://skycader.github.io/green-store-frontend",
+  "DISABLEhomepage": "https://skycader.github.io/green-store-frontend",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
